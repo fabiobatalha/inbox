@@ -24,6 +24,7 @@ class Deposit(TimeStampedModel):
 
     status = StatusField()
     status_changed = MonitorField(monitor='status')
+    depositor = models.CharField(max_length=16)
 
 
 class Package(TimeStampedModel):

@@ -27,7 +27,9 @@ def deposit_package(request):
         try:
             deposit_id = transactions.deposit_package(
                 form.cleaned_data['package'],
-                form.cleaned_data['md5_sum'])
+                form.cleaned_data['md5_sum'],
+                form.cleaned_data['depositor']
+            )
 
         except transactions.ChecksumError as exc:
             LOGGER.exception(exc)
@@ -37,4 +39,3 @@ def deposit_package(request):
 
     else:
         return HttpResponseBadRequest()
-

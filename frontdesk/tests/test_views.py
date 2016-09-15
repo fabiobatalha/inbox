@@ -17,7 +17,9 @@ class DepositPackageTests(TestCase):
         with open(os.path.abspath(__file__), 'rb') as _file:
             md5_sum = utils.safe_checksum_file(_file)
             request = self.factory.post(
-                    self.url, {'md5_sum': md5_sum, 'package': _file})
+                self.url,
+                {'md5_sum': md5_sum, 'package': _file, 'depositor': 'gn1'}
+            )
 
         response = views.deposit_package(request)
         self.assertEqual(response.status_code, 200)

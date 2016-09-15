@@ -17,7 +17,7 @@ class ChecksumError(BaseFrontdeskException):
 
 
 @transaction.atomic
-def deposit_package(file, md5_sum):
+def deposit_package(file, md5_sum, depositor):
     """Deposita o pacote.
 
     Essa função realiza a conferência da soma md5 de ``file``. Retorna o
@@ -32,7 +32,7 @@ def deposit_package(file, md5_sum):
         raise ChecksumError('Expecting "%s", but got "%s".',
                 md5_sum, actual_md5_sum)
 
-    deposit = models.Deposit.objects.create()
+    deposit = models.Deposit.objects.create(depositor=depositor)
     package = models.Package.objects.create(
             deposit=deposit, file=file, md5_sum=md5_sum)
 

@@ -14,8 +14,10 @@ class ChecksumFileTests(TestCase):
         import hashlib
         algo = hashlib.md5()
         algo.update(self.octets)
-        self.assertEquals(algo.hexdigest(),
-                utils.checksum_file(self.sample_file))
+        self.assertEquals(
+            algo.hexdigest(),
+            utils.checksum_file(self.sample_file)
+        )
 
     def test_byte_offset_is_changed(self):
         former_offset = self.sample_file.tell()
@@ -32,8 +34,10 @@ class SafeChecksumFileTests(TestCase):
         import hashlib
         algo = hashlib.md5()
         algo.update(self.octets)
-        self.assertEquals(algo.hexdigest(),
-                utils.safe_checksum_file(self.sample_file))
+        self.assertEquals(
+            algo.hexdigest(),
+            utils.safe_checksum_file(self.sample_file)
+        )
 
     def test_byte_offset_is_preserved(self):
         former_offset = self.sample_file.tell()

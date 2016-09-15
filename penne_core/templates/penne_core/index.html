@@ -25,7 +25,7 @@
             <a href="{{ detailed_deposit.package.file.url }}"><i class="fa fa-cloud-download"></i>Download</a>
           </span>
           <div><b>MD5 Sum:</b> {{ detailed_deposit.package.md5_sum }}</div>
-          <div><b>Depositado em:</b> {{ detailed_deposit.created }}</div>            
+          <div><b>Depositado em:</b> {{ detailed_deposit.created }} <b>por</b> {{ detailed_deposit.depositor }}</div>
       </div>
       <!-- /.info-box-content -->
     </div>
