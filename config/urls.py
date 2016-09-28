@@ -11,7 +11,7 @@ from penne_core import views as pc_views  # views em nível de projeto
 
 
 urlpatterns = [
-    url(r'^$', pc_views.index, name='index'),
+    url(r'^$', pc_views.package_report, name='package_report'),
 
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, include(admin.site.urls)),

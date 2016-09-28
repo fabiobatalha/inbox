@@ -16,6 +16,17 @@ PACKAGE_VIRUSSCAN_STATUS_UNDETERMINED = 'undetermined'
 PACKAGE_VIRUSSCAN_STATUS_INFECTED = 'infected'
 PACKAGE_VIRUSSCAN_STATUS_UNINFECTED = 'uninfected'
 
+DEFAULT_STATUS_COLORS = 'aqua'
+STATUS_COLORS = {
+    'queued': 'aqua',
+    'undetermined': 'aqua',
+    'infected': 'red',
+    'uninfected': 'green',
+    'deposited': 'blue',
+    'rejected': 'red',
+    'accepted': 'green'
+}
+
 
 class Deposit(TimeStampedModel):
     """O depósito de um pacote SciELO PS para ingresso na coleção.
@@ -36,6 +47,11 @@ class Deposit(TimeStampedModel):
     status = StatusField()
     status_changed = MonitorField(monitor='status')
     depositor = models.CharField(max_length=16)
+
+    @property
+    def status_color(self):
+
+        return STATUS_COLORS.get(self.status, DEFAULT_STATUS_COLORS)
 
 
 class Package(TimeStampedModel):
@@ -79,6 +95,11 @@ class Package(TimeStampedModel):
                   PACKAGE_VIRUSSCAN_STATUS_INFECTED,
                   PACKAGE_VIRUSSCAN_STATUS_UNINFECTED])
     virus_scan_details = models.CharField(max_length=2048, default='')
+
+    @property
+    def virus_scan_status_color(self):
+
+        return STATUS_COLORS.get(self.virus_scan_status, DEFAULT_STATUS_COLORS)
 
 
 class PackageMember(models.Model):

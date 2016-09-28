@@ -128,14 +128,9 @@
             <li class="header">DEPOSITS</li>
             {% for deposit in deposits %}
             <li>
-            <a href="/?show={{ deposit.pk }}"><i class="fa fa-circle-o text-aqua"></i>#{{ deposit.pk }} - {{ deposit.created|naturaltime }}</a>
+            <a href="/?show={{ deposit.pk }}"><i class="fa fa-circle-o text-{{ deposit.status_color }}"></i>#{{ deposit.pk }} - {{ deposit.created|naturaltime }}</a>
             </li>
             {% endfor %}
-            <li>
-              <a href="index.html"><i class="fa fa-circle-o text-aqua"></i>#230 - 22, janeiro 2016</a>
-            </li>
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o text-green"></i>#229 - 21, janeiro 2016</a></li>
-            <li><a href="index.html"><i class="fa fa-circle-o text-red"></i>#228 - 20, janeiro 2016</a></li>
           </ul>
         </section>
         <!-- /.sidebar -->
