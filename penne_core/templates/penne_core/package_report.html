@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load humanize %}
+{% load status_colors %}
 
 {% block content %}
 <!-- Content Header (Page header) -->
@@ -13,7 +14,7 @@
   <div class="row">
     <div class="col-md-12 col-sm-18 col-xs-36">
       <div class="info-box">
-        <span class="info-box-icon bg-{{ detailed_deposit.status_color }}">
+        <span class="info-box-icon bg-{{ detailed_deposit.status|status_color }}">
           <i class="fa fa-inbox"></i>
         </span>
         <div class="info-box-content">
@@ -30,7 +31,7 @@
   </div>
   <div class="row">
     <div class="col-md-4 col-sm-8 col-xs-16">
-      <div class="info-box bg-{{ detailed_deposit.package.virus_scan_status_color }}">
+      <div class="info-box bg-{{ detailed_deposit.package.virus_scan_status|status_color }}">
         <span class="info-box-icon"><i class="fa fa-bug"></i></span>
         <div class="info-box-content">
           <span class="info-box-text">Anti-virus</span>
@@ -45,5 +46,7 @@
       </div>
     </div>
   </div>
+  <rh>
+  teste
 </section>
 {% endblock content %}
