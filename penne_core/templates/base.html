@@ -1,5 +1,7 @@
 {% load staticfiles i18n %}
 {% load humanize %}
+{% load status_colors %}
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -128,7 +130,7 @@
             <li class="header">DEPOSITS</li>
             {% for deposit in deposits %}
             <li>
-            <a href="/?show={{ deposit.pk }}"><i class="fa fa-circle-o text-{{ deposit.status_color }}"></i>#{{ deposit.pk }} - {{ deposit.created|naturaltime }}</a>
+            <a href="/?show={{ deposit.pk }}"><i class="fa fa-circle-o text-{{ deposit.status|status_color }}"></i>#{{ deposit.pk }} - {{ deposit.created|naturaltime }}</a>
             </li>
             {% endfor %}
           </ul>
